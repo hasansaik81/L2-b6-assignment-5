@@ -11,19 +11,11 @@ export const secret = "iadmcttoken";
 const createUserIntoDb=async(payload:any)=>{
  const hashPassword=await bcrypt.hash(payload.password,8) 
 
-const result = await prisma.user.create({
-data: {...payload, password: hashPassword},
-select: {
-id: true,
-email: true,
-name: true,
-role: true,
-status: true,
-createdAt: true,
-updatedAt: true,
-},
+const result =await prisma.user.create({
+data:{...payload,password:hashPassword},
 });
-return result;
+const {password, ...newResult}=result;
+return  newResult
 }
 
 const loginUserIntoDb=async(payload:any)=>{

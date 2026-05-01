@@ -1,39 +1,17 @@
-// {
-//   "compilerOptions": {
-//     "target": "ES2021",
-//     "module": "commonjs",
-//     "moduleResolution": "node",
-//     "outDir": "./dist",
-//     "rootDir": ".",
-//     "strict": true,
-//     "esModuleInterop": true,
-//     "skipLibCheck": true,
-//     "forceConsistentCasingInFileNames": true
-//   },
-//   "include": [
-//     "src/**/*"
-//   ],
-//   "exclude": [
-//     "node_modules",
-//     "dist",
-//     "generated/prisma"
-//   ]
-// }
+
+
 
 
 {
   "compilerOptions": {
     "target": "ES2020",
     "module": "CommonJS",
-    "moduleResolution": "bundler",
-    "ignoreDeprecations": "6.0",
-    "strict": true,
+    "moduleResolution": "node",
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
+    "strict": true,
     "outDir": "./dist",
-    "rootDir": "."
+    "rootDir": ""
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist", "generated/prisma"]
 }

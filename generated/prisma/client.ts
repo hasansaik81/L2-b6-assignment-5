@@ -74,3 +74,8 @@ export type Review = Prisma.ReviewModel
  * 
  */
 export type TutorSubject = Prisma.TutorSubjectModel
+/**
+ * Model Payment
+ * 
+ */
+export type Payment = Prisma.PaymentModel
