@@ -1,22 +1,26 @@
 import express from 'express';
-import { PaymentController } from './payment.controller';
-import auth, { UserRole } from '../../middlewares/auth';
+import { PaymentController } from './payment.controller.js';
+import auth, { UserRole } from '../../middlewares/auth.js';
 // import { USER_ROLE } from '../user/user.constant';
 
 const router = express.Router();
 
-// পেমেন্ট ইন্টেন্ট তৈরি করা (শুধুমাত্র স্টুডেন্টরা পারবে)
+// payment intent create 
 router.post(
   '/create-intent',
   auth(UserRole.student),
   PaymentController.createPaymentIntent
 );
 
-// পেমেন্ট কনফার্ম করা
+// payment confirmation
 router.post(
   '/confirm',
   auth(UserRole.student),
-  PaymentController.confirmPayment
+  PaymentController.savePaymentRecord
 );
 
 export const PaymentRoutes = router;
+
+
+
+

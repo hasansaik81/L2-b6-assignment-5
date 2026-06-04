@@ -1,6 +1,6 @@
 import express from 'express';
-import auth, { UserRole } from '../../middlewares/auth';
-import { CategoryController } from './category.controller';
+import auth, { UserRole } from '../../middlewares/auth.js';
+import { CategoryController } from './category.controller.js';
 
 const router = express.Router();
 router.get("/public",CategoryController.getPublicAllCategory);

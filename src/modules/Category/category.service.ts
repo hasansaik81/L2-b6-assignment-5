@@ -1,6 +1,6 @@
 
 
-import { prisma } from "../../lib/prisma"
+import { prisma } from "../../lib/prisma.js"
 
 
 const getAllCategoryIntoDB=async(userId:string)=>{

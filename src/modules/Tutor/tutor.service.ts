@@ -1,7 +1,7 @@
 
-import { User } from "../../../generated/prisma/client";
-import { BookingStatus } from "../../../generated/prisma/enums";
-import { prisma } from "../../lib/prisma"
+import { BookingStatus, User } from "../../../generated/prisma/client.js";
+// import { BookingStatus } from "../../../generated/prisma/enums";
+import { prisma } from "../../lib/prisma.js"
 
 
 const getAllTutorIntoDB=async(userId:string)=>{

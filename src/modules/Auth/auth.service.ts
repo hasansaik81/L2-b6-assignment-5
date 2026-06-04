@@ -1,9 +1,10 @@
 
 
 
-import { prisma } from "../../lib/prisma";
+// import { prisma } from "../../lib/prisma";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { prisma } from "../../lib/prisma.js";
 
 
 export const secret = "iadmcttoken";

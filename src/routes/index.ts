@@ -1,10 +1,12 @@
 import { Router } from "express";
-import { AuthRoutes } from "../modules/Auth/auth.route";
-import { TutorRoutes } from "../modules/Tutor/tutor.route";
-import { CategoryRoutes } from "../modules/Category/category.route";
-import { BookingRoutes } from "../modules/Booking/booking.route";
-import { ReviewRoutes } from "../modules/Reiview/reiview.route";
-import { SubjectsRoutes } from "../modules/Subjects/subjects.route";
+import { AuthRoutes } from "../modules/Auth/auth.route.js";
+import { TutorRoutes } from "../modules/Tutor/tutor.route.js";
+import { CategoryRoutes } from "../modules/Category/category.route.js";
+import { SubjectsRoutes } from "../modules/Subjects/subjects.route.js";
+import { BookingRoutes } from "../modules/Booking/booking.route.js";
+import { ReviewRoutes } from "../modules/Reiview/reiview.route.js";
+import { PaymentRoutes } from "../modules/Payment/payment.route.js";
+
 
 
 const router=Router();
@@ -34,6 +36,10 @@ const routerManger=[
     {
         path:"/reviews",
         route:ReviewRoutes,
+    },
+    {
+        path:"/payments",
+        route:PaymentRoutes,
     }
 
 ]

@@ -1,39 +1,10 @@
-// import { Request, Response, NextFunction } from "express";
-// import { BookingService } from "./booking.service";
-// import sendResponse from "../../utils/sendResponse";
 
-
-// // Create Booking Controller
-// const createBooking = async (req: Request, res: Response) => {
-//   try {
-//     const result= await BookingService.createBookingIntoDB(
-  
-//     req.body,
-//     req.user?.id
-//     )
-  
-//    sendResponse(res, {
-//     statusCode: 201,
-//     success: true,
-//     message:"Booking created successfully",
-//     data: result,
-//    })
-//   }catch(error:any){
-//     sendResponse(res,{
-//         statusCode: 400,
-//         success: false,
-//         message: error.message || "Failed to create booking",
-//     })
-//   }
-// };
-// export const BookingController = {
-//   createBooking,
-// };
 
 
 import { NextFunction, Request, Response } from "express";
-import { BookingService } from "./booking.service";
-import sendResponse from "../../utils/sendResponse";
+import { BookingService } from "./booking.service.js";
+import sendResponse from "../../utils/sendResponse.js";
+
 
 const createBooking = async (req: Request, res: Response,next:NextFunction ) => {
   try {
@@ -65,6 +36,29 @@ const createBooking = async (req: Request, res: Response,next:NextFunction ) => 
   }
 };
 
+
+const getSingleBooking = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { id } = req.params;
+    const result = await BookingService.getSingleBookingFromDB(id as string);
+
+    if (!result) {
+      return next(new Error("Booking not found"));
+    }
+
+    return sendResponse(res, {
+      statusCode: 200,
+      success: true,
+      message: 'Booking retrieved successfully',
+      data: result,
+    });
+
+  } catch (error) {
+    return next(error);
+  }
+};
+
 export const BookingController = {
   createBooking,
+  getSingleBooking,
 };

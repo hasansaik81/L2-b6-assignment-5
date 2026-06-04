@@ -1,6 +1,7 @@
 import express from "express";
-import auth, { UserRole } from "../../middlewares/auth";
-import { BookingController } from "./booking.controller";
+import auth, { UserRole } from "../../middlewares/auth.js";
+import { BookingController } from "./booking.controller.js";
+;
 
 
 const router = express.Router();
@@ -12,6 +13,7 @@ router.post(
   BookingController.createBooking
 );
 
+router.get("/",auth(UserRole.student),BookingController.getSingleBooking);
 
 
 

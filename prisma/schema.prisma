@@ -1,10 +1,10 @@
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
+  
 }
 
 // model User {
@@ -25,6 +25,7 @@ enum Role {
 
 enum BookingStatus {
   PENDING
+  PAID
   CONFIRMED
   COMPLETED
   CANCELLED
@@ -137,7 +138,7 @@ model Booking {
  
   startDate  DateTime
   endDate    DateTime
-  totalPrice Float
+  totalPrice Decimal       @db.Decimal(10, 2)
   status     BookingStatus @default(PENDING)
   note       String?
 
@@ -207,14 +208,16 @@ model Payment {
   
   paymentGatewayData Json?
   
+  
   bookingId       String        @unique
   booking         Booking       @relation(fields: [bookingId], references: [id])
 
-  amount          Float
+  amount          Decimal       @db.Decimal(10, 2)
   currency        String        @default("usd")
 
   stripePaymentId String?       // paymentIntent id
   stripeSessionId String?       // checkout session id
+  stripeEventId   String?       @unique
 
   status          PaymentStatus @default(PENDING)
 

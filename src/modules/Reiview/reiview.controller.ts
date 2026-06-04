@@ -2,8 +2,10 @@
 
 
 import { NextFunction, Request, Response } from "express";
-import { ReviewService } from "./reiview.service";
-import sendResponse from "../../utils/sendResponse";
+import { ReviewService } from "./reiview.service.js";
+import sendResponse from "../../utils/sendResponse.js";
+// import { ReviewService } from "./reiview.service";
+// import sendResponse from "../../utils/sendResponse";
 
 const createReview = async (req: Request,res: Response,next:NextFunction) => {
   try {
